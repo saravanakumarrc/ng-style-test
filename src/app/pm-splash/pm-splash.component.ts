@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PmSplashComponent implements OnInit {
   initialLeftPosition: 100;
-  pmDateList: Array<Date> = [
-    new Date(2020, 9, 25),
-    new Date(2020, 6, 1),
-    new Date(2020, 6, 20),
+  pmDuesList: Array<{ dueDate: Date; pmName: string }> = [
+    { dueDate: new Date(2020, 9, 25), pmName: 'pm1' },
+    { dueDate: new Date(2020, 6, 1), pmName: 'pm2' },
+    { dueDate: new Date(2020, 6, 20), pmName: 'pm3' },
   ];
 
   constructor() {}
@@ -44,11 +44,11 @@ export class PmSplashComponent implements OnInit {
     return style;
   }
 
-  get PmDuePositions(): Array<{ position: number }> {
-    const pmDuePositions: Array<{ position: number }> = [];
-    this.pmDateList.forEach((pmDate) => {
-      const pmMonth = pmDate.getMonth();
-      const pmDayNumber = pmDate.getDate();
+  get PmDuePositions(): Array<{ position: number; text: string }> {
+    const pmDuePositions: Array<{ position: number; text: string }> = [];
+    this.pmDuesList.forEach((pmDue) => {
+      const pmMonth = pmDue.dueDate.getMonth();
+      const pmDayNumber = pmDue.dueDate.getDate();
       const pmMonthIndex = this.MonthNames.findIndex(
         (p) => p.number === pmMonth
       );
@@ -56,7 +56,7 @@ export class PmSplashComponent implements OnInit {
         const monthPosition = pmMonthIndex * 90;
         const dayPosition = pmDayNumber * 3;
         const finalPosition = monthPosition + dayPosition;
-        pmDuePositions.push({ position: finalPosition });
+        pmDuePositions.push({ position: finalPosition, text: pmDue.pmName });
       }
     });
     return pmDuePositions;

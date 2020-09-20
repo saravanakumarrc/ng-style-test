@@ -2,6 +2,8 @@
   <div class="splash-unit" [ngStyle]="getUnitStyle()"></div>
   <div class="splash-pm-flags" *ngFor="let pmDuePosition of PmDuePositions;">
     <div class="splash-pm-flag" [ngStyle]="getLeftPositionStyle(pmDuePosition.position + 'px')"></div>
+    <div class="splash-pm-flag-text" [ngStyle]="getLeftPositionStyle(pmDuePosition.position + 'px')">
+      {{ pmDuePosition.text }}</div>
   </div>
   <div class="splash-month-name" *ngFor="let month of MonthNames; index as i;"
     [ngStyle]="getLeftPositionStyle((i * 90) +'px')">

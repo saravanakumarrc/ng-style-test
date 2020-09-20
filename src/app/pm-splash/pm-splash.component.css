@@ -18,7 +18,6 @@
 }
 
 .splash-pm-flags {
-  width: 100%;
   height: 100px;
   position: absolute;
   bottom: 82px;
@@ -29,6 +28,14 @@
   background-repeat: no-repeat;
   width: 40px;
   height: 100px;
+  position: absolute;
+}
+
+.splash-pm-flag-text {
+  width: 60px;
+  height: 20px;
+  padding: 5px;
+  bottom: 100px;
   position: absolute;
 }
 

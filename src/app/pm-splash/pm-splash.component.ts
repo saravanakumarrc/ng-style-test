@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PmSplashComponent implements OnInit {
   initialLeftPosition: 100;
+  pmDateList: Array<Date> = [new Date(2020, 6, 20)];
 
   getFlagStyle(leftPx: string) {
     const flagStyle = {
@@ -22,24 +23,38 @@ export class PmSplashComponent implements OnInit {
     return monthStyle;
   }
 
-  get PmDuePositions(): Array<number> {
-    return [400, 500, 550];
+  get PmDuePositions(): Array<{ position: number }> {
+    const pmDuePositions: Array<{ position: number }> = [];
+    this.pmDateList.forEach((pmDate) => {
+      const pmMonth = pmDate.getMonth();
+      const pmDayNumber = pmDate.getDate();
+      const pmMonthIndex = this.MonthNames.findIndex(
+        (p) => p.number === pmMonth
+      );
+      if (pmMonthIndex >= 0) {
+        const monthPosition = pmMonthIndex * 90;
+        const dayPosition = pmDayNumber * 3;
+        const finalPosition = monthPosition + dayPosition;
+        pmDuePositions.push({ position: finalPosition });
+      }
+    });
+    return pmDuePositions;
   }
 
-  get MonthNames(): Array<string> {
+  get MonthNames(): Array<{ monthName: string; number: number }> {
     const monthNames = [
-      'Dec',
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
+      { monthName: 'Dec', number: 0 },
+      { monthName: 'Jan', number: 1 },
+      { monthName: 'Feb', number: 2 },
+      { monthName: 'Mar', number: 3 },
+      { monthName: 'Apr', number: 4 },
+      { monthName: 'May', number: 5 },
+      { monthName: 'Jun', number: 6 },
+      { monthName: 'Jul', number: 7 },
+      { monthName: 'Aug', number: 8 },
+      { monthName: 'Sep', number: 9 },
+      { monthName: 'Oct', number: 10 },
+      { monthName: 'Nov', number: 11 },
     ];
     const currentMonth = new Date().getMonth();
     return [

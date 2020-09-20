@@ -1,10 +1,10 @@
 <div class="splash-bg">
-  <div class="splash-unit"></div>
+  <div class="splash-unit" [ngStyle]="getUnitStyle()"></div>
   <div class="splash-pm-flags" *ngFor="let pmDuePosition of PmDuePositions;">
-    <div class="splash-pm-flag" [ngStyle]="getFlagStyle(pmDuePosition.position + 'px')"></div>
+    <div class="splash-pm-flag" [ngStyle]="getLeftPositionStyle(pmDuePosition.position + 'px')"></div>
   </div>
   <div class="splash-month-name" *ngFor="let month of MonthNames; index as i;"
-    [ngStyle]="getMonthPosition((i * 90) +'px')">
+    [ngStyle]="getLeftPositionStyle((i * 90) +'px')">
     {{month.monthName}}
     <div class="splash-month-leg splash-month-first-leg"></div>
     <div class="splash-month-leg splash-month-second-leg"></div>

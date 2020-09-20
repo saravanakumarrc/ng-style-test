@@ -7,20 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PmSplashComponent implements OnInit {
   initialLeftPosition: 100;
-  pmDateList: Array<Date> = [new Date(2020, 6, 20)];
+  pmDateList: Array<Date> = [new Date(2020, 9, 25)];
 
-  getFlagStyle(leftPx: string) {
-    const flagStyle = {
+  getLeftPositionStyle(leftPx: string): any {
+    const style = {
       left: leftPx,
     };
-    return flagStyle;
+    return style;
   }
 
-  getMonthPosition(leftPx: string) {
-    const monthStyle = {
-      left: leftPx,
+  getUnitStyle() {
+    let unitPosition = 0;
+    const currentDate = new Date(2020, 9, 20);
+    const currentMonthNumber = currentDate.getMonth();
+    const currentDayNumber = currentDate.getDate();
+    const currentMonthIndex = this.MonthNames.findIndex(
+      (p) => p.number === currentMonthNumber
+    );
+    if (currentMonthIndex >= 0) {
+      const monthPosition = currentMonthIndex * 90;
+      const dayPosition = currentDayNumber * 3;
+      unitPosition = monthPosition + dayPosition;
+    }
+    const leftPosition = unitPosition - 200 + 'px';
+    const style = {
+      left: leftPosition,
     };
-    return monthStyle;
+    return style;
   }
 
   get PmDuePositions(): Array<{ position: number }> {

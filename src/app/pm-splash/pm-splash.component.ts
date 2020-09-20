@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PmSplashComponent implements OnInit {
   initialLeftPosition: 100;
-  pmDateList: Array<Date> = [new Date(2020, 9, 25)];
+  pmDateList: Array<Date> = [
+    new Date(2020, 9, 25),
+    new Date(2020, 6, 1),
+    new Date(2020, 6, 20),
+  ];
+
+  constructor() {}
+
+  ngOnInit(): void {}
 
   getLeftPositionStyle(leftPx: string): any {
     const style = {
@@ -88,8 +96,4 @@ export class PmSplashComponent implements OnInit {
       monthNames[(currentMonth + 4) % 12],
     ];
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

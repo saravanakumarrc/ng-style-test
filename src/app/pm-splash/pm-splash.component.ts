@@ -8,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class PmSplashComponent implements OnInit {
   initialLeftPosition: 100;
   pmDuesList: Array<{ dueDate: Date; pmName: string }> = [
-    { dueDate: new Date(2020, 9, 25), pmName: 'pm1' },
+    { dueDate: new Date(2020, 10, 25), pmName: 'pm1' },
     { dueDate: new Date(2020, 6, 1), pmName: 'pm2' },
     { dueDate: new Date(2020, 6, 20), pmName: 'pm3' },
+    { dueDate: new Date(2021, 1, 1), pmName: 'pm4' },
   ];
 
   constructor() {}
@@ -26,7 +27,7 @@ export class PmSplashComponent implements OnInit {
 
   getUnitStyle() {
     let unitPosition = 0;
-    const currentDate = new Date(2020, 9, 20);
+    const currentDate = new Date(2020, 8, 20);
     const currentMonthNumber = currentDate.getMonth();
     const currentDayNumber = currentDate.getDate();
     const currentMonthIndex = this.MonthNames.findIndex(
@@ -94,6 +95,7 @@ export class PmSplashComponent implements OnInit {
       monthNames[(currentMonth + 2) % 12],
       monthNames[(currentMonth + 3) % 12],
       monthNames[(currentMonth + 4) % 12],
+      monthNames[(currentMonth + 5) % 12],
     ];
   }
 }
